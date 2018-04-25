@@ -118,6 +118,7 @@ const picks = {
     lockitin: 0,
   }
 }
+const teams = ['HOU', 'MIN', 'OKC', 'UTA', 'TOR', 'WAS', 'BOS', 'MIL', 'CLE', 'IND'];
 const possibleOutcomes = [
   [1, 4],
   [3, 6],
@@ -133,24 +134,45 @@ Object.keys(picks).forEach(name => lastPlaceStats[name] = 0);
 resetCurrentRoundScores();
 
 // iterate through every possible timeline
-let numPossible = 0;
+let numPossibleTimelines = 0;
+let num2wayTies = 0;
+let num3wayTies = 0;
 for(let i = 0; i < POSSIBILITIES; i++) {
   let oct = (i).toString(8);
   let padded = leftPad(oct, NUM_SERIES, '0');
   if(!timelinePossible(padded)) {
     continue;
   }
-  numPossible++;
+  numPossibleTimelines++;
   let outcomes = padded.split('').map(x => Number(x));
   updateScoresForTimeline(outcomes);
   let lastPlaceFinishers = getLastPlace();
   lastPlaceFinishers.forEach(name => lastPlaceStats[name]++);
+
+  if(lastPlaceFinishers.length == 2) num2wayTies++;
+  if(lastPlaceFinishers.length == 3) num3wayTies++;
   oneVone('fray', 'gret', oneVoneRecord);
   resetCurrentRoundScores();
 }
-console.log(numPossible);
-console.log(oneVoneRecord);
+console.log(`Num timelines left: ${numPossibleTimelines}`);
+// console.log(oneVoneRecord);
 console.log(lastPlaceStats);
+console.log(`Num 2 way ties: ${num2wayTies}`);
+console.log(`Num 3 way ties: ${num3wayTies}`);
+
+function getSeriesResultsString(seriesNumber, outcome) {
+  faveTeamIndex = seriesNumber * 2;
+  dogTeamIndex = seriesNumber * 2 + 1;
+  if(outcome < 4) {
+    return (`${teams[faveTeamIndex]} ${outcome + 4}`);
+  } else {
+    return (`${teams[dogTeamIndex]} ${11 - outcome}`);
+  }
+}
+
+function getResultsStrings(outcome) {
+  return outcome.map((_outcome, index) => getSeriesResultsString(index, _outcome)).join(' ');
+}
 
 function oneVone(player1, player2, record) {
   if(!oneVoneRecord[player1] && !oneVoneRecord[player2]) {
