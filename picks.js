@@ -128,6 +128,7 @@ const possibleOutcomes = [
 const NUM_SERIES = possibleOutcomes.length;
 const POSSIBILITIES = Math.pow(8, NUM_SERIES);
 const lastPlaceStats = {};
+const oneVoneRecord = {};
 Object.keys(picks).forEach(name => lastPlaceStats[name] = 0);
 resetCurrentRoundScores();
 
@@ -143,12 +144,29 @@ for(let i = 0; i < POSSIBILITIES; i++) {
   let outcomes = padded.split('').map(x => Number(x));
   updateScoresForTimeline(outcomes);
   let lastPlaceFinishers = getLastPlace();
-  // add to rolling tally
   lastPlaceFinishers.forEach(name => lastPlaceStats[name]++);
+  oneVone('fray', 'gret', oneVoneRecord);
   resetCurrentRoundScores();
 }
 console.log(numPossible);
+console.log(oneVoneRecord);
 console.log(lastPlaceStats);
+
+function oneVone(player1, player2, record) {
+  if(!oneVoneRecord[player1] && !oneVoneRecord[player2]) {
+    oneVoneRecord[player1] = 0;
+    oneVoneRecord[player2] = 0;
+    oneVoneRecord.tied = 0;
+  }
+
+  if(picks[player1].currentPoints > picks[player2].currentPoints)
+    record[player1] += 1
+  else if(picks[player1].currentPoints < picks[player2].currentPoints)
+    record[player2] += 1
+  else {
+    record.tied += 1
+  }
+}
 
 function getLastPlace() {
   // returns array
