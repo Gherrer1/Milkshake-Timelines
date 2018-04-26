@@ -121,10 +121,10 @@ const picks = {
 const teams = ['HOU', 'MIN', 'OKC', 'UTA', 'TOR', 'WAS', 'BOS', 'MIL', 'CLE', 'IND'];
 const possibleOutcomes = [
   [1, 4],
-  [3, 6],
-  [2, 5],
+  [3, 5],
   [2, 4],
-  [2, 5]
+  [2, 4],
+  [2, 4]
 ];
 const NUM_SERIES = possibleOutcomes.length;
 const POSSIBILITIES = Math.pow(8, NUM_SERIES);
@@ -152,6 +152,7 @@ for(let i = 0; i < POSSIBILITIES; i++) {
   if(lastPlaceFinishers.length == 2) num2wayTies++;
   if(lastPlaceFinishers.length == 3) num3wayTies++;
   oneVone('fray', 'gret', oneVoneRecord);
+
   resetCurrentRoundScores();
 }
 console.log(`Num timelines left: ${numPossibleTimelines}`);
