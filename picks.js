@@ -1,10 +1,9 @@
 /*
   indices for each series:
-  rockets 0
-  okc 1
-  raps 2
-  celts 3
-  cavs 4
+  okc 0
+  raps 1
+  celts 2
+  cavs 3
 
   values:
   0 - fave in 4
@@ -20,107 +19,95 @@ const leftPad = require('left-pad');
 const picks = {
   jerry: {
     startPoints: 3,
-    0: 0,
-    1: 2,
-    2: 1,
-    3: 5,
-    4: 1,
-    lockitin: 0, // index
+    0: 2,
+    1: 1,
+    2: 5,
+    3: 1,
+    lockitin: -1, // index
   },
   fray: {
-    startPoints: 4,
-    0: 1,
-    1: 3,
-    2: 2,
-    3: 4,
-    4: 0,
-    lockitin: 4,
+    startPoints: 6,
+    0: 3,
+    1: 2,
+    2: 4,
+    3: 0,
+    lockitin: 3,
   },
   andrew: {
-    startPoints: 5,
-    0: 1,
+    startPoints: 7,
+    0: 3,
     1: 3,
-    2: 3,
+    2: 2,
     3: 2,
-    4: 2,
     lockitin: -1,
   },
   gret: {
     startPoints: 3,
-    0: 0,
-    1: 4,
-    2: 1,
-    3: 2,
-    4: 0,
-    lockitin: 0,
+    0: 4,
+    1: 1,
+    2: 2,
+    3: 0,
+    lockitin: -1,
   },
   flex: {
     startPoints: 3,
-    0: 0,
-    1: 3,
-    2: 2,
-    3: 3,
-    4: 2,
-    lockitin: 0,
+    0: 3,
+    1: 2,
+    2: 3,
+    3: 2,
+    lockitin: -1,
   },
   mark: {
     startPoints: 4,
-    0: 0,
-    1: 3,
-    2: 1,
-    3: 5,
-    4: 0,
-    lockitin: 0,
+    0: 3,
+    1: 1,
+    2: 5,
+    3: 0,
+    lockitin: -1,
   },
   kaf: {
-    startPoints: 3,
-    0: 0,
-    1: 2,
-    2: 1,
-    3: 2,
-    4: 1,
-    lockitin: 4,
+    startPoints: 4,
+    0: 2,
+    1: 1,
+    2: 2,
+    3: 1,
+    lockitin: 3,
   },
   ian: {
     startPoints: 2,
-    0: 0,
+    0: 1,
     1: 1,
-    2: 1,
-    3: 2,
-    4: 0,
-    lockitin: 0,
+    2: 2,
+    3: 0,
+    lockitin: -1,
   },
   scott: {
     startPoints: 4,
-    0: 0,
-    1: 5,
-    2: 2,
-    3: 3,
-    4: 1,
-    lockitin: 0,
+    0: 5,
+    1: 2,
+    2: 3,
+    3: 1,
+    lockitin: -1,
   },
   can: {
-    startPoints: 6,
-    0: 1,
-    1: 2,
-    2: 1,
+    startPoints: 8,
+    0: 2,
+    1: 1,
+    2: 2,
     3: 2,
-    4: 2,
     lockitin: -1,
   },
   ryan: {
     startPoints: 2,
-    0: 0,
-    1: 2,
-    2: 1,
-    3: 5,
-    4: 0,
-    lockitin: 0,
+    0: 2,
+    1: 1,
+    2: 5,
+    3: 0,
+    lockitin: -1,
   }
 }
-const teams = ['HOU', 'MIN', 'OKC', 'UTA', 'TOR', 'WAS', 'BOS', 'MIL', 'CLE', 'IND'];
+const teams = ['OKC', 'UTA', 'TOR', 'WAS', 'BOS', 'MIL', 'CLE', 'IND'];
 const possibleOutcomes = [
-  [1, 4],
   [3, 5],
   [2, 4],
   [2, 4],
