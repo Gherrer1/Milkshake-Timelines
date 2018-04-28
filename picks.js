@@ -1,9 +1,8 @@
 /*
   indices for each series:
   okc 0
-  raps 1
-  celts 2
-  cavs 3
+  celts 1
+  cavs 2
 
   values:
   0 - fave in 4
@@ -20,97 +19,85 @@ const picks = {
   jerry: {
     startPoints: 3,
     0: 2,
-    1: 1,
-    2: 5,
-    3: 1,
+    1: 5,
+    2: 1,
     lockitin: -1, // index
   },
   fray: {
     startPoints: 6,
     0: 3,
-    1: 2,
-    2: 4,
-    3: 0,
-    lockitin: 3,
+    1: 4,
+    2: 0,
+    lockitin: 2,
   },
   andrew: {
     startPoints: 7,
     0: 3,
-    1: 3,
+    1: 2,
     2: 2,
-    3: 2,
     lockitin: -1,
   },
   gret: {
     startPoints: 3,
     0: 4,
-    1: 1,
-    2: 2,
-    3: 0,
+    1: 2,
+    2: 0,
     lockitin: -1,
   },
   flex: {
     startPoints: 3,
     0: 3,
-    1: 2,
-    2: 3,
-    3: 2,
+    1: 3,
+    2: 2,
     lockitin: -1,
   },
   mark: {
     startPoints: 4,
     0: 3,
-    1: 1,
-    2: 5,
-    3: 0,
+    1: 5,
+    2: 0,
     lockitin: -1,
   },
   kaf: {
     startPoints: 4,
     0: 2,
-    1: 1,
-    2: 2,
-    3: 1,
-    lockitin: 3,
+    1: 2,
+    2: 1,
+    lockitin: 2,
   },
   ian: {
     startPoints: 2,
     0: 1,
-    1: 1,
-    2: 2,
-    3: 0,
+    1: 2,
+    2: 0,
     lockitin: -1,
   },
   scott: {
     startPoints: 4,
     0: 5,
-    1: 2,
-    2: 3,
-    3: 1,
+    1: 3,
+    2: 1,
     lockitin: -1,
   },
   can: {
     startPoints: 8,
     0: 2,
-    1: 1,
+    1: 2,
     2: 2,
-    3: 2,
     lockitin: -1,
   },
   ryan: {
     startPoints: 2,
     0: 2,
-    1: 1,
-    2: 5,
-    3: 0,
+    1: 5,
+    2: 0,
     lockitin: -1,
   }
 }
-const teams = ['OKC', 'UTA', 'TOR', 'WAS', 'BOS', 'MIL', 'CLE', 'IND'];
+const teams = ['OKC', 'UTA', 'BOS', 'MIL', 'CLE', 'IND'];
 const possibleOutcomes = [
   [3, 5],
-  [2, 4],
-  [2, 4],
+  [3, 4],
   [2, 4]
 ];
 const NUM_SERIES = possibleOutcomes.length;
@@ -135,6 +122,9 @@ for(let i = 0; i < POSSIBILITIES; i++) {
   updateScoresForTimeline(outcomes);
   let lastPlaceFinishers = getLastPlace();
   lastPlaceFinishers.forEach(name => lastPlaceStats[name]++);
+  if(lastPlaceFinishers.length > 1) {
+    console.log(getResultsStrings(outcomes));
+  }
 
   if(lastPlaceFinishers.length == 2) num2wayTies++;
   if(lastPlaceFinishers.length == 3) num3wayTies++;
