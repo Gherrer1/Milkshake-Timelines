@@ -118,8 +118,8 @@ const teams = ['HOU', 'UTA', 'GS', 'NO', 'TOR', 'CLE', 'BOS', 'PHI'];
 const possibleOutcomes = [
   [0, 6],
   [0, 6],
-  [0, 7],
-  [0, 7]
+  [1, 7],
+  [0, 6]
 ];
 const NUM_SERIES = possibleOutcomes.length;
 const POSSIBILITIES = Math.pow(8, NUM_SERIES);
