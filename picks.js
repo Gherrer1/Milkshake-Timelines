@@ -117,7 +117,7 @@ const picks = {
 const teams = ['HOU', 'UTA', 'GS', 'NO', 'TOR', 'CLE', 'BOS', 'PHI'];
 const possibleOutcomes = [
   [0, 6],
-  [0, 6],
+  [0, 5],
   [1, 7],
   [0, 6]
 ];
