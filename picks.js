@@ -17,7 +17,7 @@
 */
 const leftPad = require('left-pad');
 const picks = {
-  jerry: {
+  vaughn: {
     startPoints: 0,
     0: 1,
     1: 2,
@@ -116,10 +116,10 @@ const picks = {
 }
 const teams = ['HOU', 'UTA', 'GS', 'NO', 'TOR', 'CLE', 'BOS', 'PHI'];
 const possibleOutcomes = [
-  [0, 6],
+  [1, 6],
   [0, 5],
-  [1, 7],
-  [0, 6]
+  [2, 7],
+  [0, 5]
 ];
 const NUM_SERIES = possibleOutcomes.length;
 const POSSIBILITIES = Math.pow(8, NUM_SERIES);
@@ -189,7 +189,7 @@ function oneVone(player1, player2, record) {
 
 function getLastPlace() {
   // returns array
-  let minScore = picks.jerry.currentPoints;
+  let minScore = picks.fray.currentPoints;
   Object.keys(picks).forEach(name => {
     if(picks[name].currentPoints < minScore) {
       minScore = picks[name].currentPoints;
