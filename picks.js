@@ -116,10 +116,10 @@ const picks = {
 }
 const teams = ['HOU', 'UTA', 'GS', 'NO', 'TOR', 'CLE', 'BOS', 'PHI'];
 const possibleOutcomes = [
-  [1, 6],
-  [0, 5],
-  [2, 7],
-  [0, 5]
+  [1, 5],
+  [1, 5],
+  [3, 7],
+  [0, 4]
 ];
 const NUM_SERIES = possibleOutcomes.length;
 const POSSIBILITIES = Math.pow(8, NUM_SERIES);
@@ -146,8 +146,11 @@ for(let i = 0; i < POSSIBILITIES; i++) {
   updateScoresForTimeline(outcomes);
   let lastPlaceFinishers = getLastPlace();
   lastPlaceFinishers.forEach(name => lastPlaceStats[name]++);
-
   tiesArray[lastPlaceFinishers.length]++;
+
+  if(lastPlaceFinishers.length === 9) {
+    // console.log(lastPlaceFinishers);
+  }
 
   resetCurrentRoundScores();
 }
