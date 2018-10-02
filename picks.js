@@ -1,9 +1,8 @@
 /*
   indices for each series:
-  Rockets 0
-  Warriors 1
-  Raps 2
-  Cels 3
+  Celtics-Cavs 0
+  Rockets-Warriors 1
+  Warriors-Cavs 2
 
   values:
   0 - fave in 4
@@ -19,107 +18,87 @@ const leftPad = require('left-pad');
 const picks = {
   vaughn: {
     startPoints: 0,
-    0: 1,
-    1: 2,
-    2: 5,
-    3: 6,
-    lockitin: 3, // index
+    0: 5,
+    1: 5,
+    2: 1,
+    lockitin: 0, // index
   },
   fray: {
     startPoints: 0,
-    0: 1,
-    1: 1,
-    2: 5,
-    3: 5,
-    lockitin: 0,
-  },
-  andrew: {
-    startPoints: 0,
-    0: 2,
-    1: 1,
-    2: 2,
-    3: 5,
-    lockitin: 0,
+    0: 5,
+    1: 6,
+    2: 1,
+    lockitin: 2,
   },
   gret: {
     startPoints: 0,
-    0: 2,
-    1: 2,
-    2: 5,
-    3: 5,
-    lockitin: 3,
+    0: 6,
+    1: 5,
+    2: 1,
+    lockitin: 2,
   },
   flex: {
     startPoints: 0,
-    0: 1,
-    1: 1,
-    2: 2,
-    3: 5,
+    0: 5,
+    1: 5,
+    2: 1,
     lockitin: 0,
   },
   mark: {
     startPoints: 0,
-    0: 1,
-    1: 2,
-    2: 4,
-    3: 6,
-    lockitin: 3,
+    0: 6,
+    1: 5,
+    2: 1,
+    lockitin: 2,
   },
   kaf: {
     startPoints: 0,
-    0: 2,
+    0: 6,
     1: 2,
-    2: 5,
-    3: 6,
-    lockitin: 3,
+    2: 2,
+    lockitin: 2,
   },
   ian: {
     startPoints: 0,
-    0: 1,
-    1: 1,
-    2: 4,
-    3: 5,
-    lockitin: 0,
+    0: 5,
+    1: 5,
+    2: 1,
+    lockitin: 2,
   },
   scott: {
     startPoints: 0,
-    0: 1,
-    1: 0,
-    2: 3,
-    3: 3,
-    lockitin: 0,
+    0: 3,
+    1: 5,
+    2: 0,
+    lockitin: 2,
   },
   can: {
     startPoints: 0,
-    0: 1,
-    1: 2,
-    2: 6,
-    3: 5,
+    0: 6,
+    1: 5,
+    2: 2,
     lockitin: 0,
   },
   ryan: {
     startPoints: 0,
-    0: 0,
-    1: 1,
-    2: 4,
-    3: 5,
-    lockitin: 1,
+    0: 5,
+    1: 5,
+    2: 1,
+    lockitin: 0,
   },
   will: {
     startPoints: 0,
-    0: 1,
-    1: 1,
-    2: 2,
-    3: 6,
-    lockitin: 0
+    0: 5,
+    1: 6,
+    2: 1,
+    lockitin: 2
   }
 }
-const teams = ['HOU', 'UTA', 'GS', 'NO', 'TOR', 'CLE', 'BOS', 'PHI'];
+const teams = ['BOS', 'CLE', 'HOU', 'GS', 'GS', 'CLE'];
 const possibleOutcomes = [
-  [1, 5],
-  [1, 5],
-  [3, 7],
-  [0, 4]
+  [4, 4],
+  [4, 4],
+  [0, 7],
 ];
 const NUM_SERIES = possibleOutcomes.length;
 const POSSIBILITIES = Math.pow(8, NUM_SERIES);
@@ -131,7 +110,7 @@ resetCurrentRoundScores();
 // iterate through every possible timeline
 let numPossibleTimelines = 0;
 let tiesArray = [];
-for(let i = 0; i < 10; i++) {
+for(let i = 0; i < 3; i++) {
   tiesArray.push(0);
 }
 
@@ -148,15 +127,14 @@ for(let i = 0; i < POSSIBILITIES; i++) {
   lastPlaceFinishers.forEach(name => lastPlaceStats[name]++);
   tiesArray[lastPlaceFinishers.length]++;
 
-  if(lastPlaceFinishers.length === 9) {
-    // console.log(lastPlaceFinishers);
-  }
+  console.log(getResultsStrings(outcomes));
+  console.log(lastPlaceFinishers);
 
   resetCurrentRoundScores();
 }
 console.log(`Num timelines left: ${numPossibleTimelines}`);
 console.log(lastPlaceStats);
-for(let i = 1; i < 10; i++) {
+for(let i = 1; i < 3; i++) {
   console.log(`Num ${i} way ties left: ${tiesArray[i]}`);
 }
 
